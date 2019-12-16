@@ -8,8 +8,10 @@ export class Mailer {
   private transporter: NodeMailer.Transporter;
 
   public constructor() {
+    // tslint:disable-next-line:no-console
+    console.log(process.env);
     this.transporter = NodeMailer.createTransport({
-      host: process.env.MAILER_HOST,
+      host: process.env.APP_MAILER_HOST,
       port: 465,
       secure: true, // true for 465, false for other ports
       auth: {
@@ -20,7 +22,10 @@ export class Mailer {
   }
 
   private get user() {
-    return { user: process.env.MAILER_USERNAME, pass: process.env.MAILER_PASS };
+    return {
+      user: process.env.APP_MAILER_USERNAME,
+      pass: process.env.APP_MAILER_PASS
+    };
   }
 
   public async send(data: IMailerData) {
