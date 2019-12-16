@@ -7,7 +7,7 @@ import { Mailer } from "./mailer";
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 8080; // default port to listen
+const port = parseFloat(process.env.PORT) || 8080; // default port to listen
 const mailer = new Mailer();
 
 // Configure Express to use EJS
@@ -34,7 +34,7 @@ app.post("/", async (req, res) => {
 });
 
 // start the express server
-app.listen(port, () => {
+app.listen(port, "0.0.0.0", () => {
   // tslint:disable-next-line:no-console
   console.log(`Server started at http://localhost:${port}`);
 });
