@@ -8,8 +8,6 @@ export class Mailer {
   private transporter: NodeMailer.Transporter;
 
   public constructor() {
-    // tslint:disable-next-line:no-console
-    console.log(this.user);
     this.transporter = NodeMailer.createTransport({
       host: process.env.HOST,
       port: 465,
@@ -22,7 +20,7 @@ export class Mailer {
   }
 
   private get user() {
-    return { user: process.env.USER, pass: process.env.PASS };
+    return { user: process.env.USERNAME, pass: process.env.PASS };
   }
 
   public async send(data: IMailerData) {
