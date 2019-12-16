@@ -8,8 +8,6 @@ export class Mailer {
   private transporter: NodeMailer.Transporter;
 
   public constructor() {
-    // tslint:disable-next-line:no-console
-    console.log(process.env);
     this.transporter = NodeMailer.createTransport({
       host: process.env.APP_MAILER_HOST,
       port: 465,
@@ -42,7 +40,6 @@ export class Mailer {
     } catch (e) {
       // tslint:disable-next-line:no-console
       console.log(e);
-      return e;
     }
 
     return info;

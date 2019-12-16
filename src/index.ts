@@ -29,7 +29,7 @@ app.post("/", async (req, res) => {
     res.status(400).json("Missing 'to' or 'subject' or 'from' parameter");
   } else {
     const info = await mailer.send(data);
-    res.status(200).json(info);
+    info ? res.status(200).json(info) : res.status(500);
   }
 });
 
