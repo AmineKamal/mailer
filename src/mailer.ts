@@ -30,12 +30,19 @@ export class Mailer {
 
   public async send(data: IMailerData) {
     const { from, to, subject } = data;
-    const info = await this.transporter.sendMail({
-      from,
-      to,
-      subject,
-      text: stringify(this.extract(data), null, 4, 100)
-    });
+    let info;
+
+    try {
+      info = await this.transporter.sendMail({
+        from,
+        to,
+        subject,
+        text: stringify(this.extract(data), null, 4, 100)
+      });
+    } catch (e) {
+      // tslint:disable-next-line:no-console
+      console.log(e);
+    }
 
     return info;
   }
