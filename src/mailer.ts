@@ -42,6 +42,7 @@ export class Mailer {
     } catch (e) {
       // tslint:disable-next-line:no-console
       console.log(e);
+      return e;
     }
 
     return info;
