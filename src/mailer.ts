@@ -13,17 +13,10 @@ export class Mailer {
       port: 465,
       secure: true, // true for 465, false for other ports
       auth: {
-        user: this.user.user, // generated ethereal user
-        pass: this.user.pass // generated ethereal password
+        user: process.env.APP_MAILER_USERNAME, // generated ethereal user
+        pass: process.env.APP_MAILER_PASS // generated ethereal password
       }
     });
-  }
-
-  private get user() {
-    return {
-      user: process.env.APP_MAILER_USERNAME,
-      pass: process.env.APP_MAILER_PASS
-    };
   }
 
   public async send(data: IMailerData) {
