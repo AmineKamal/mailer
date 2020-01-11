@@ -1,1 +1,2 @@
-# mailer
+# Mailer
+Simple Mailing Server
